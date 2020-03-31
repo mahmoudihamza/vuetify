@@ -13,17 +13,17 @@ export default {
         }
     },
     created(){
-        const tokenStorage = localStorage.getItem('access_token')
-        //console.log(tokenStorage);
-        axios.defaults.headers.common['Authorization'] = 'Bearer ' +tokenStorage
-        
-            axios.post('/logout')
-          .then(response=>{
-              console.log(response)
+        this.$store.dispatch('destroyToken')
+        .then(response=>{
+            console.log(response)
+            this.$router.push({name:'Login'})
+
+        })
+       
+            
               
-              localStorage.removeItem('access_token')
-              this.$router.push({name:'Login'})
-          })
+              
+          
 
 
         

@@ -16,32 +16,38 @@ const routes = [
   {
     path: '/',
     name: 'Dashboard',
-    component: Dashboard
+    component: Dashboard,
+    meta: { requiresAuth: true }
   },
   {
     path: '/categories',
     name: 'Categories',
-    component: Categories
+    component: Categories,
+    meta: { requiresAuth: true }
   },
   {
     path: '/products',
     name: 'Products',
-    component: Products
+    component: Products,
+    meta: { requiresAuth: true }
   },
   {
     path: '/team',
     name: 'Team',
-    component: Team
+    component: Team,
+    meta: { requiresAuth: true }
   },
   {
     path: '/login',
     name: 'Login',
-    component: Login
+    component: Login,
+    meta: { requiresVisitor: true }
   },
   {
     path: '/register',
     name: 'Register',
-    component: Register
+    component: Register,
+    meta: { requiresVisitor: true }
   },
   {
     path: '/logout',

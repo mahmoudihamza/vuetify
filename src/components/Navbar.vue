@@ -3,8 +3,8 @@
     <v-app-bar flat app >
       <v-app-bar-nav-icon v-if="loggedIn" class="grey--text" @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title class="text-uppercase grey--text">
-        <span class="font-weight-light">Todo</span>
-        <span>Ninja</span>
+        <span class="font-weight-light">Anita</span>
+        <span> Consulting</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn  v-if="!loggedIn" text color="grey" router to="/register">
@@ -52,7 +52,6 @@ export default {
     data(){
         return{
             drawer :false,
-            token:localStorage.getItem('access_token') || null,
             items: [
               { title: 'Dashboard', icon: 'mdi-view-dashboard',route:'/' },
               { title: 'Products', icon: 'mdi-image',route:'/products' },
@@ -66,15 +65,7 @@ export default {
     computed:{
       loggedIn(){
         
-        console.log(this.token)
-        if(this.token!==null)
-        {
-          return 1
-        }
-        else{
-          return 0
-        }
-        //return this.token!==null
+        return this.$store.getters.loggedIn
         
         
       }

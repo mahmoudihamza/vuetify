@@ -1,5 +1,5 @@
 <template>
-<v-container class="ma-8">
+<v-container class="mt-12">
 
     <v-card class="blue-grey lighten-4 pa-5">
 
@@ -80,18 +80,16 @@ export default {
       validate () {
         if (this.$refs.form.validate()) {
           this.snackbar = true
-           axios.post('/login',{
-              username:this.email,
-              password :this.password
 
-          })
-          .then(response=>{
-              //console.log(response)
-              const token = response.data.access_token
-              localStorage.setItem('access_token',token)
-              
-              this.$router.push({name:'Dashboard'})
-          })
+          this.$store.dispatch('retrieveToken', {
+        username: this.email,
+        password: this.password,
+      })
+        .then(response => {
+          console.log(response)
+          this.$router.push({ name: 'Dashboard' })
+        })
+          
         }
       },
       reset () {
